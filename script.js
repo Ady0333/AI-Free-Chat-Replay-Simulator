@@ -21,7 +21,7 @@ let speed = 1;
 
 
 async function loadChat() {
-    const res = await fetch("chat_data.json");
+    const res = await fetch("code.json");
     chatData = await res.json();
     document.getElementById("topAvatar").querySelector("img").src = chatData[0].avatar;
     progressLabel.textContent = `0/${chatData.length}`;
