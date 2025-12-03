@@ -3,60 +3,80 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Replay Simulator</title>
-    <link rel="stylesheet" href="chat_box.css" />
+    <title>Chat Replay — Modern UI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="frame">
-        <!-- Chat Section -->
-        <section class="panel">
-            <div class="topbar">
-                <div class="topbar-left">
-                    <div class="av" id="topAvatar"><img src=""></div>
-                    <div class="title">
-                        <div class="name" id="topName">Group Chat</div>
-                        <div class="sub" id="topSub">5 participants • replay</div>
-                    </div>
-                </div>
 
-                <div class="controls">
-                    <button id="playBtn" class="btn play">Play</button>
-                    <button id="pauseBtn" class="btn" disabled>Pause</button>
-                    <button id="restartBtn" class="btn">Restart</button>
+<div class="frame single">
 
-                    <select id="speedSelect" class="speed">
-                        <option value="0.5">0.5x</option>
-                        <option value="1" selected>1x</option>
-                        <option value="1.5">1.5x</option>
-                        <option value="2">2x</option>
-                    </select>
+    <!-- CHAT PANEL -->
+    <section class="panel">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="av" id="topAvatar"><img src=""></div>
+                <div class="title">
+                    <div class="name" id="topName">Group Chat</div>
+                    <div class="sub" id="topSub">Replay Simulation</div>
                 </div>
             </div>
 
-            <div class="chat-area">
-                <div class="window" id="chatWindow"></div>
+            <div class="controls">
+                <button id="playBtn" class="btn play">Play</button>
+                <button id="pauseBtn" class="btn" disabled>Pause</button>
 
-                <div class="typing-wrapper">
-                    <div id="typingBox" class="typing hidden">
-                        <div class="av-sm"><img id="typingAvatar" src=""></div>
-                        <div>
-                            <div class="who" id="typingName"></div>
-                            <div class="dots">
-                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                            </div>
+                <select id="speedSelect" class="speed">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>1x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                </select>
+
+                <!-- Theme toggle -->
+                <button id="themeToggle" class="toggle-btn">
+                    <div class="icon sun">☀️</div>
+                    <div class="icon moon">🌙</div>
+                </button>
+
+                <!-- AMOLED toggle -->
+                <label class="switch">
+                    <input id="amoledToggle" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- CHAT WINDOW -->
+        <div class="chat-area">
+            <div class="window" id="chatWindow"></div>
+
+            <div class="typing-wrapper">
+                <div id="typingBox" class="typing hidden">
+                    <div class="av-sm"><img id="typingAvatar" src=""></div>
+                    <div>
+                        <div class="who" id="typingName"></div>
+                        <div class="dots">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
                         </div>
                     </div>
-
-                    <div class="small" id="statusLabel">Ready</div>
                 </div>
-            </div>
 
-            <div class="footer">
-                <div class="small">Local demo — using JSON file</div>
-                <div class="small" id="progressLabel"></div>
+                <div class="small" id="statusLabel">Ready</div>
             </div>
-        </section>
-    </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="small">JSON Powered • Smooth Replay</div>
+            <div class="small" id="progressLabel"></div>
+        </div>
+
+    </section>
+
+</div>
 
 <script src="script.js"></script>
 </body>
