@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Replay Simulator</title>
+    <link rel="stylesheet" href="chat_box.css" />
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Chat Replay Simulator</h1>
+        <div class="controls">
+            <button id="playBtn" class="btn btn-primary">Play</button>
+            <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+
+            <select id="speedSelect" class="speed-select">
+                <option value="0.5">0.5x</option>
+                <option value="1" selected>1x</option>
+                <option value="2">2x</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="chatWindow" class="chat-window"></div>
+
+    <div id="typingBar" class="typing hidden">
+        <img id="typingAvatar" class="typing-avatar" src="" />
+        <div>
+            <div id="typingName" class="typing-name"></div>
+            <div class="dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="chat_box.js"></script>
+</body>
+</html>
