@@ -101,25 +101,38 @@ body {
 }
 
 .toggle-btn {
-  width:52px;
-  height:28px;
-  background:var(--panel);
-  border:none;
-  border-radius:20px;
-  position:relative;
-  cursor:pointer;
+  position: relative;
+  display: inline-block;
+  width: 52px;  
+  height: 28px;
+  border-radius: 20px;
+  background: var(--panel);
+  border: none;
+  cursor: pointer;
+  overflow: visible;
 }
 
 .toggle-btn .icon {
-  position:absolute;
-  transition:transform .35s ease, opacity .35s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); 
+  transition: transform .35s ease, opacity .35s ease;
+  font-size: 18px;   
+  line-height: 1;
+  pointer-events: none; 
 }
 
-.sun { left:6px; opacity:1; transform:rotate(0deg); }
-.moon { right:6px; opacity:0; transform:rotate(-90deg); }
+.toggle-btn .sun { left: 8px; opacity: 1; transform: translateY(-50%) rotate(0deg); }
+.toggle-btn .moon { right: 8px; opacity: 0; transform: translateY(-50%) rotate(-90deg); }
 
-body.dark .sun { opacity:0; transform:rotate(90deg); }
-body.dark .moon { opacity:1; transform:rotate(0deg); }
+body.dark .toggle-btn .sun {
+  opacity: 0;
+  transform: translateY(-50%) rotate(90deg);
+}
+body.dark .toggle-btn .moon {
+  opacity: 1;
+  transform: translateY(-50%) rotate(0deg);
+}
 
 .chat-area {
   margin-top:12px;
