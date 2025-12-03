@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Aditya",
+        "avatar": "https://i.pravatar.cc/150?img=12",
+        "text": "Hey guys! We starting the project?",
+        "side": "left",
+        "reaction": ""
+    },
+    {
+        "name": "Atul",
+        "avatar": "https://i.pravatar.cc/150?img=32",
+        "text": "Yes bro, let's build it!",
+        "side": "right",
+        "reaction": "👍"
+    },
+    {
+        "name": "Sujith",
+        "avatar": "https://i.pravatar.cc/150?img=45",
+        "text": "I'll handle the UI.",
+        "side": "left",
+        "reaction": "🔥"
+    },
+    {
+        "name": "Pranshi",
+        "avatar": "https://i.pravatar.cc/150?img=18",
+        "text": "Should we add typing animation too?",
+        "side": "left",
+        "reaction": "❤️"
+    },
+    {
+        "name": "Atharva",
+        "avatar": "https://i.pravatar.cc/150?img=27",
+        "text": "Yes! And WhatsApp reactions.",
+        "side": "right",
+        "reaction": "👌"
+    }
+]
