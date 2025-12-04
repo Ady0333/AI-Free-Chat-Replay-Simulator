@@ -19,6 +19,7 @@ let chatData = [];
 let index = 0;
 let playing = false;
 let paused = false;
+let playbackSpeed = 1;
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
@@ -31,7 +32,8 @@ async function loadChat() {
 loadChat();
 
 function typingDuration(text) {
-    return Math.max(400, text.length * 200);
+    const base =  Math.max(400, text.length * 200);
+    return Math.round(base / playbackSpeed)
 }
 
 function showTyping(msg) {
@@ -90,7 +92,7 @@ async function playChat() {
         index++;
         progressLabel.textContent = `${index}/${chatData.length}`;
 
-        let post = 600;
+        let post = Math.round(600 / playbackSpeed);
         while (post > 0) {
             if (!playing) return;
             if (paused) { await sleep(100); continue; }
@@ -112,12 +114,14 @@ async function playChat() {
 
 playBtn.addEventListener("click", () => {
     pauseBtn.style.visibility = "visible";
+    speedSelect.style.display = "inline-block"
     if (!playing) {
         if (index >= chatData.length) {
             chatWindow.innerHTML = "";
             index = 0;
             progressLabel.textContent = `0/${chatData.length}`;
         }
+        playbackSpeed = parseFloat(speedSelect.value) || 1;
         playChat();
     }
 });
@@ -145,4 +149,8 @@ restartBtn.addEventListener("click", () => {
     progressLabel.textContent = `0/${chatData.length}`;
 
     playChat();
+});
+
+speedSelect.addEventListener("chnage", () => {
+    playbackSpeed = parseFloat(speedSelect.value) || 1;
 });
