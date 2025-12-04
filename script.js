@@ -30,7 +30,6 @@ async function loadChat() {
 }
 loadChat();
 
-/* Typing delay: 0.2 sec per character */
 function typingDuration(text) {
     return Math.max(400, text.length * 200);
 }
@@ -57,16 +56,14 @@ function addMessage(msg) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-/* ------------------------ MAIN PLAYBACK LOOP ------------------------ */
 async function playChat() {
     playing = true;
     paused = false;
 
-    playBtn.style.display = "none";          // hide play during playing
-    pauseBtn.style.display = "inline-block"; // show pause
+    playBtn.style.display = "none";          
+    pauseBtn.style.display = "inline-block"; 
     resumeBtn.style.display = "none";        
-    restartBtn.style.display = "inline-block"; // enable restart
-
+    restartBtn.style.display = "inline-block"; 
     statusLabel.textContent = "Playing";
 
     while (playing && index < chatData.length) {
@@ -85,7 +82,6 @@ async function playChat() {
 
         hideTyping();
 
-        // wait for resume if paused
         while (paused) await sleep(100);
         if (!playing) return;
 
@@ -105,7 +101,6 @@ async function playChat() {
 
     playing = false;
 
-    // At end
     playBtn.style.display = "inline-block";
     playBtn.textContent = "Play Again";
     pauseBtn.style.display = "none";
@@ -114,8 +109,6 @@ async function playChat() {
 
     statusLabel.textContent = "Finished";
 }
-
-/* ------------------------ BUTTON HANDLERS ------------------------ */
 
 playBtn.addEventListener("click", () => {
     if (!playing) {
@@ -142,7 +135,6 @@ resumeBtn.addEventListener("click", () => {
     statusLabel.textContent = "Playing";
 });
 
-// NEW: dedicated restart button
 restartBtn.addEventListener("click", () => {
     playing = false;
     paused = false;
