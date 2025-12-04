@@ -32,7 +32,7 @@ async function loadChat() {
 loadChat();
 
 function typingDuration(text) {
-    const base =  Math.max(400, text.length * 200);
+    const base =  Math.max(400, text.length * 60);
     return Math.round(base / playbackSpeed)
 }
 
