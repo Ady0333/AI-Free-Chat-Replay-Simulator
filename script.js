@@ -1,6 +1,6 @@
-
 const playBtn = document.getElementById("playBtn");
 const pauseBtn = document.getElementById("pauseBtn");
+const resumeBtn = document.getElementById("resumeBtn");
 const speedSelect = document.getElementById("speedSelect");
 
 const chatWindow = document.getElementById("chatWindow");
@@ -11,14 +11,13 @@ const typingAvatar = document.getElementById("typingAvatar");
 const statusLabel = document.getElementById("statusLabel");
 const progressLabel = document.getElementById("progressLabel");
 
-const themeToggle = document.getElementById("themeToggle");
-const amoledToggle = document.getElementById("amoledToggle");
-
 let chatData = [];
 let index = 0;
 let playing = false;
+let paused = false;
 let speed = 1;
 
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function loadChat() {
     const res = await fetch("code.json");
@@ -28,8 +27,8 @@ async function loadChat() {
 }
 loadChat();
 
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
+function typingDuration(text) {
+    return Math.max(400, text.length * 200); 
 
 function showTyping(msg) {
     typingName.textContent = msg.name + " is typing…";
@@ -50,7 +49,6 @@ function addMessage(msg) {
         <div>
             <div class="metaRow">${msg.name}</div>
             <div class="bubble">${msg.text}</div>
-            ${msg.reaction ? `<div class="react">${msg.reaction}</div>` : ""}
         </div>
     `;
 
@@ -58,91 +56,104 @@ function addMessage(msg) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-
 async function playChat() {
     playing = true;
+    paused = false;
 
     while (playing && index < chatData.length) {
-        let msg = chatData[index];
+        const msg = chatData[index];
 
+        
         showTyping(msg);
-        await sleep(800 / speed);
+
+        let duration = typingDuration(msg.text);
+        let elapsed = 0;
+
+        
+        while (elapsed < duration) {
+            if (!playing) return;
+            if (paused) {
+                await sleep(100);
+                continue;
+            }
+            await sleep(100);
+            elapsed += 100;
+        }
 
         hideTyping();
+
+        
+        while (paused) await sleep(100);
+        if (!playing) return;
+
         addMessage(msg);
 
         index++;
         progressLabel.textContent = `${index}/${chatData.length}`;
 
-        await sleep(650 / speed);
+        
+        let post = 600;
+        while (post > 0) {
+            if (!playing) return;
+            if (paused) { await sleep(100); continue; }
+            await sleep(100);
+            post -= 100;
+        }
     }
 
-    if (index >= chatData.length) {
-        playing = false;
-        playBtn.disabled = false;
-        pauseBtn.disabled = true;
-        statusLabel.textContent = "Finished";
-    }
+    playing = false;
+    playBtn.disabled = false;
+    statusLabel.textContent = "Finished";
+
+    pauseBtn.style.display = "none";
+    resumeBtn.style.display = "none";
 }
+
 
 
 playBtn.addEventListener("click", () => {
-    if (index >= chatData.length) {
-        chatWindow.innerHTML = "";
-        index = 0;
+    if (!playing) {
+        
+        if (index >= chatData.length) {
+            chatWindow.innerHTML = "";
+            index = 0;
+            progressLabel.textContent = `0/${chatData.length}`;
+        }
+
+        playing = true;
+        paused = false;
+
+        playBtn.textContent = "Restart Replay";
+        pauseBtn.style.display = "inline-block";
+        resumeBtn.style.display = "none";
+
+        statusLabel.textContent = "Playing";
+
+        playChat();
+    } else {
+        
+        playing = false;
+        paused = false;
+
+        setTimeout(() => {
+            chatWindow.innerHTML = "";
+            index = 0;
+            progressLabel.textContent = `0/${chatData.length}`;
+            playChat();
+        }, 150);
     }
-
-    speed = parseFloat(speedSelect.value);
-    playBtn.disabled = true;
-    pauseBtn.disabled = false;
-    statusLabel.textContent = "Playing";
-
-    playChat();
 });
 
 pauseBtn.addEventListener("click", () => {
-    playing = false;
-    pauseBtn.disabled = true;
-    playBtn.disabled = false;
+    paused = true;
+    pauseBtn.style.display = "none";
+    resumeBtn.style.display = "inline-block";
     statusLabel.textContent = "Paused";
 });
 
-
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}
-
-if (localStorage.getItem("amoled") === "true") {
-    document.body.classList.add("amoled");
-    amoledToggle.checked = true;
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-});
-
-amoledToggle.addEventListener("change", () => {
-    if (amoledToggle.checked) {
-        document.body.classList.add("amoled");
-        localStorage.setItem("amoled", "true");
-    } else {
-        document.body.classList.remove("amoled");
-        localStorage.setItem("amoled", "false");
-    }
-});
-
-/* system dark mode detection */
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-if (prefersDark.matches && !localStorage.getItem("theme")) {
-    document.body.classList.add("dark");
-}
-
-/* Space = play/pause */
-document.addEventListener("keydown", (e) => {
-    if (e.code === "Space") {
-        e.preventDefault();
-        if (playing) pauseBtn.click();
-        else playBtn.click();
-    }
+resumeBtn.addEventListener("click", () => {
+    paused = false;
+    resumeBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+    statusLabel.textContent = "Playing";
 });
