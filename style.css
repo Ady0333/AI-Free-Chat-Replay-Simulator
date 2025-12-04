@@ -74,10 +74,6 @@ body {
   color:white;
 }
 
-#pauseBtn {
-    visibility: hidden;
-}
-
 .speed {
   padding:8px;
   border-radius:10px;
@@ -99,11 +95,11 @@ body {
 .toggle-btn .icon {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
   transition: transform .35s ease, opacity .35s ease;
-  font-size: 18px;   
+  font-size: 18px;  
   line-height: 1;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .toggle-btn .sun { left: 8px; opacity: 1; transform: translateY(-50%) rotate(0deg); }
@@ -141,7 +137,6 @@ body {
   z-index: 1;            
 }
 
-
 @keyframes fadeIn {
   to { opacity:1; transform:none; }
 }
@@ -154,6 +149,9 @@ body {
   border-radius:16px;
   background:var(--gradientBubble);
   box-shadow:var(--shadow);
+  position: relative;
+  min-width: 60px;
+  word-break: break-word;
 }
 
 .avatar {
@@ -168,7 +166,7 @@ body {
   border-radius: 12px;
   gap: 8px;
   max-width: 300px;
-  background: var(--leftBubble);   
+  background: var(--leftBubble);  
   display: flex;
   align-items: center;
   box-shadow: var(--shadow);
@@ -176,13 +174,11 @@ body {
   z-index: 5;
 }
 
-
 .av-sm {
   width: 10px;
   height: 10px;
   border-radius: 6px;
 }
-
 
 #typingName {
   font-size: 16px;  
@@ -217,7 +213,7 @@ body {
 .typing .avatar,
 .typing .av,
 .typing .av-sm {
-  width: 36px;             
+  width: 36px;            
   height: 36px;
   border-radius: 8px;      
   overflow: hidden;        
@@ -232,4 +228,24 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;       
+}
+
+/* New small reaction bubble */
+.reaction {
+  display:inline-block;
+  margin-left:8px;
+  font-size:14px;
+  vertical-align:middle;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:opacity .25s ease, transform .25s ease;
+}
+.reaction.show {
+  opacity:1;
+  transform:none;
+}
+.metaRow {
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:6px;
 }
