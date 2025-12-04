@@ -12,8 +12,6 @@ const typingAvatar = document.getElementById("typingAvatar");
 const statusLabel = document.getElementById("statusLabel");
 const progressLabel = document.getElementById("progressLabel");
 
-const themeToggle = document.getElementById("themeToggle");
-const amoledToggle = document.getElementById("amoledToggle");
 
 let chatData = [];
 let index = 0;
