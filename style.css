@@ -74,6 +74,10 @@ body {
   color:white;
 }
 
+#pauseBtn {
+    visibility: hidden;
+}
+
 .speed {
   padding:8px;
   border-radius:10px;

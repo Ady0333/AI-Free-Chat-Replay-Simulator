@@ -111,6 +111,7 @@ async function playChat() {
 }
 
 playBtn.addEventListener("click", () => {
+    pauseBtn.style.visibility = "visible";
     if (!playing) {
         if (index >= chatData.length) {
             chatWindow.innerHTML = "";
