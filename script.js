@@ -1,6 +1,7 @@
-
 const playBtn = document.getElementById("playBtn");
 const pauseBtn = document.getElementById("pauseBtn");
+const resumeBtn = document.getElementById("resumeBtn");
+const restartBtn = document.getElementById("restartBtn");
 const speedSelect = document.getElementById("speedSelect");
 
 const chatWindow = document.getElementById("chatWindow");
@@ -11,12 +12,15 @@ const typingAvatar = document.getElementById("typingAvatar");
 const statusLabel = document.getElementById("statusLabel");
 const progressLabel = document.getElementById("progressLabel");
 
+const themeToggle = document.getElementById("themeToggle");
+const amoledToggle = document.getElementById("amoledToggle");
 
 let chatData = [];
 let index = 0;
 let playing = false;
-let speed = 1;
+let paused = false;
 
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function loadChat() {
     const res = await fetch("code.json");
@@ -26,18 +30,17 @@ async function loadChat() {
 }
 loadChat();
 
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
+/* Typing delay: 0.2 sec per character */
+function typingDuration(text) {
+    return Math.max(400, text.length * 200);
+}
 
 function showTyping(msg) {
     typingName.textContent = msg.name + " is typing…";
     typingAvatar.src = msg.avatar;
     typingBox.classList.remove("hidden");
 }
-
-function hideTyping() {
-    typingBox.classList.add("hidden");
-}
+function hideTyping() { typingBox.classList.add("hidden"); }
 
 function addMessage(msg) {
     const div = document.createElement("div");
@@ -48,99 +51,105 @@ function addMessage(msg) {
         <div>
             <div class="metaRow">${msg.name}</div>
             <div class="bubble">${msg.text}</div>
-            ${msg.reaction ? `<div class="react">${msg.reaction}</div>` : ""}
         </div>
     `;
-
     chatWindow.appendChild(div);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-
+/* ------------------------ MAIN PLAYBACK LOOP ------------------------ */
 async function playChat() {
     playing = true;
+    paused = false;
+
+    playBtn.style.display = "none";          // hide play during playing
+    pauseBtn.style.display = "inline-block"; // show pause
+    resumeBtn.style.display = "none";        
+    restartBtn.style.display = "inline-block"; // enable restart
+
+    statusLabel.textContent = "Playing";
 
     while (playing && index < chatData.length) {
-        let msg = chatData[index];
+        const msg = chatData[index];
 
         showTyping(msg);
-        await sleep(800 / speed);
+        let duration = typingDuration(msg.text);
+
+        let elapsed = 0;
+        while (elapsed < duration) {
+            if (!playing) return;
+            if (paused) { await sleep(100); continue; }
+            await sleep(100);
+            elapsed += 100;
+        }
 
         hideTyping();
+
+        // wait for resume if paused
+        while (paused) await sleep(100);
+        if (!playing) return;
+
         addMessage(msg);
 
         index++;
         progressLabel.textContent = `${index}/${chatData.length}`;
 
-        await sleep(650 / speed);
+        let post = 600;
+        while (post > 0) {
+            if (!playing) return;
+            if (paused) { await sleep(100); continue; }
+            await sleep(100);
+            post -= 100;
+        }
     }
 
-    if (index >= chatData.length) {
-        playing = false;
-        playBtn.disabled = false;
-        pauseBtn.disabled = true;
-        statusLabel.textContent = "Finished";
-    }
+    playing = false;
+
+    // At end
+    playBtn.style.display = "inline-block";
+    playBtn.textContent = "Play Again";
+    pauseBtn.style.display = "none";
+    resumeBtn.style.display = "none";
+    restartBtn.style.display = "inline-block";
+
+    statusLabel.textContent = "Finished";
 }
 
+/* ------------------------ BUTTON HANDLERS ------------------------ */
 
 playBtn.addEventListener("click", () => {
-    if (index >= chatData.length) {
-        chatWindow.innerHTML = "";
-        index = 0;
+    if (!playing) {
+        if (index >= chatData.length) {
+            chatWindow.innerHTML = "";
+            index = 0;
+            progressLabel.textContent = `0/${chatData.length}`;
+        }
+        playChat();
     }
-
-    speed = parseFloat(speedSelect.value);
-    playBtn.disabled = true;
-    pauseBtn.disabled = false;
-    statusLabel.textContent = "Playing";
-
-    playChat();
 });
 
 pauseBtn.addEventListener("click", () => {
-    playing = false;
-    pauseBtn.disabled = true;
-    playBtn.disabled = false;
+    paused = true;
+    pauseBtn.style.display = "none";
+    resumeBtn.style.display = "inline-block";
     statusLabel.textContent = "Paused";
 });
 
-
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}
-
-if (localStorage.getItem("amoled") === "true") {
-    document.body.classList.add("amoled");
-    amoledToggle.checked = true;
-}
-
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+resumeBtn.addEventListener("click", () => {
+    paused = false;
+    resumeBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+    statusLabel.textContent = "Playing";
 });
 
-amoledToggle.addEventListener("change", () => {
-    if (amoledToggle.checked) {
-        document.body.classList.add("amoled");
-        localStorage.setItem("amoled", "true");
-    } else {
-        document.body.classList.remove("amoled");
-        localStorage.setItem("amoled", "false");
-    }
-});
+// NEW: dedicated restart button
+restartBtn.addEventListener("click", () => {
+    playing = false;
+    paused = false;
 
-/* system dark mode detection */
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-if (prefersDark.matches && !localStorage.getItem("theme")) {
-    document.body.classList.add("dark");
-}
+    chatWindow.innerHTML = "";
+    index = 0;
+    progressLabel.textContent = `0/${chatData.length}`;
 
-/* Space = play/pause */
-document.addEventListener("keydown", (e) => {
-    if (e.code === "Space") {
-        e.preventDefault();
-        if (playing) pauseBtn.click();
-        else playBtn.click();
-    }
+    playChat();
 });
