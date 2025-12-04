@@ -1,5 +1,6 @@
 [
     {
+        "id": "m001",
         "name": "Aditya",
         "avatar": "https://i.pravatar.cc/150?img=12",
         "text": "Hey guys! We starting the project?",
@@ -7,6 +8,7 @@
         "reaction": ""
     },
     {
+        "id": "m002",
         "name": "Atul",
         "avatar": "https://i.pravatar.cc/150?img=32",
         "text": "Yes bro, let's build it!",
@@ -14,6 +16,7 @@
         "reaction": "👍"
     },
     {
+        "id": "m003",
         "name": "Sujith",
         "avatar": "https://i.pravatar.cc/150?img=45",
         "text": "I'll handle the UI.",
@@ -21,6 +24,7 @@
         "reaction": "🔥"
     },
     {
+        "id": "m004",
         "name": "Pranshi",
         "avatar": "https://i.pravatar.cc/150?img=18",
         "text": "Should we add typing animation too?",
@@ -28,6 +32,7 @@
         "reaction": "❤️"
     },
     {
+        "id": "m005",
         "name": "Atharva",
         "avatar": "https://i.pravatar.cc/150?img=27",
         "text": "Yes! And WhatsApp reactions.",
@@ -35,6 +40,7 @@
         "reaction": "👌"
     },
     {
+        "id": "m006",
         "name": "Aditya",
         "avatar": "https://i.pravatar.cc/150?img=12",
         "text": "Did anyone push their code yet?",
@@ -42,6 +48,7 @@
         "reaction": ""
     },
     {
+        "id": "m007",
         "name": "Atul",
         "avatar": "https://i.pravatar.cc/150?img=32",
         "text": "Not yet, give me 10 mins.",
@@ -49,6 +56,7 @@
         "reaction": ""
     },
     {
+        "id": "m008",
         "name": "Sujith",
         "avatar": "https://i.pravatar.cc/150?img=45",
         "text": "I'm testing the UI transitions.",
@@ -56,6 +64,7 @@
         "reaction": ""
     },
     {
+        "id": "m009",
         "name": "Pranshi",
         "avatar": "https://i.pravatar.cc/150?img=18",
         "text": "Send the updated color palette.",
@@ -63,14 +72,15 @@
         "reaction": ""
     },
     {
+        "id": "m010",
         "name": "Atharva",
         "avatar": "https://i.pravatar.cc/150?img=27",
         "text": "Uploaded in the assets folder.",
         "side": "right",
         "reaction": ""
     },
-
     {
+        "id": "m011",
         "name": "Riya",
         "avatar": "https://i.pravatar.cc/150?img=5",
         "text": "Home screen layout is done.",
@@ -78,6 +88,7 @@
         "reaction": ""
     },
     {
+        "id": "m012",
         "name": "Kabir",
         "avatar": "https://i.pravatar.cc/150?img=14",
         "text": "Cool, drop the screenshot.",
@@ -85,6 +96,7 @@
         "reaction": "👍"
     },
     {
+        "id": "m013",
         "name": "Mehul",
         "avatar": "https://i.pravatar.cc/150?img=31",
         "text": "API rate limiting fixed.",
@@ -92,6 +104,7 @@
         "reaction": ""
     },
     {
+        "id": "m014",
         "name": "Sneha",
         "avatar": "https://i.pravatar.cc/150?img=29",
         "text": "Anyone checked the loading animation?",
@@ -99,14 +112,15 @@
         "reaction": ""
     },
     {
+        "id": "m015",
         "name": "Vikas",
         "avatar": "https://i.pravatar.cc/150?img=44",
         "text": "Looks smooth on my device.",
         "side": "left",
         "reaction": ""
     },
-
     {
+        "id": "m016",
         "name": "Tanvi",
         "avatar": "https://i.pravatar.cc/150?img=9",
         "text": "Navbar icons still misaligned.",
@@ -114,6 +128,7 @@
         "reaction": ""
     },
     {
+        "id": "m017",
         "name": "Rohan",
         "avatar": "https://i.pravatar.cc/150?img=37",
         "text": "I'll fix the flex settings.",
@@ -121,6 +136,7 @@
         "reaction": ""
     },
     {
+        "id": "m018",
         "name": "Arnav",
         "avatar": "https://i.pravatar.cc/150?img=16",
         "text": "Just committed the dark mode patch.",
@@ -128,6 +144,7 @@
         "reaction": ""
     },
     {
+        "id": "m019",
         "name": "Nisha",
         "avatar": "https://i.pravatar.cc/150?img=22",
         "text": "Dark mode looks clean!",
@@ -135,300 +152,11 @@
         "reaction": "❤️"
     },
     {
+        "id": "m020",
         "name": "Dev",
         "avatar": "https://i.pravatar.cc/150?img=48",
         "text": "I’ll start optimizing images.",
         "side": "left",
         "reaction": ""
-    },
-
-    {
-        "name": "Ishaan",
-        "avatar": "https://i.pravatar.cc/150?img=11",
-        "text": "Login authentication working now.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Aisha",
-        "avatar": "https://i.pravatar.cc/150?img=23",
-        "text": "Great! I’ll redesign the login page.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Rehan",
-        "avatar": "https://i.pravatar.cc/150?img=36",
-        "text": "Who’s handling database backup?",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Kritika",
-        "avatar": "https://i.pravatar.cc/150?img=28",
-        "text": "I can do that after lunch.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Aryan",
-        "avatar": "https://i.pravatar.cc/150?img=19",
-        "text": "Push notifications are half done.",
-        "side": "left",
-                   "reaction": ""
-    },
-
-    {
-        "name": "Harsh",
-        "avatar": "https://i.pravatar.cc/150?img=8",
-        "text": "Tested the animations on iOS, works fine.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Pooja",
-        "avatar": "https://i.pravatar.cc/150?img=6",
-        "text": "Chat bubble spacing still off.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Vihaan",
-        "avatar": "https://i.pravatar.cc/150?img=15",
-        "text": "I'll fix padding values.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Simran",
-        "avatar": "https://i.pravatar.cc/150?img=24",
-        "text": "We need a better header design.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Yash",
-        "avatar": "https://i.pravatar.cc/150?img=43",
-        "text": "I'll sketch a few ideas.",
-        "side": "right",
-        "reaction": ""
-    },
-
-    {
-        "name": "Lavanya",
-        "avatar": "https://i.pravatar.cc/150?img=33",
-        "text": "Footer icons are too big.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Kunal",
-        "avatar": "https://i.pravatar.cc/150?img=41",
-        "text": "Scaling them down by 20%.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Sarthak",
-        "avatar": "https://i.pravatar.cc/150?img=10",
-        "text": "Fonts inconsistent across pages.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Mitali",
-        "avatar": "https://i.pravatar.cc/150?img=7",
-        "text": "I'll unify typography.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Krish",
-        "avatar": "https://i.pravatar.cc/150?img=13",
-        "text": "Search bar not responsive.",
-        "side": "left",
-        "reaction": ""
-    },
-
-    {
-        "name": "Diksha",
-        "avatar": "https://i.pravatar.cc/150?img=20",
-        "text": "Updated search component width.",
-        "side": "right",
-        "reaction": "👌"
-    },
-    {
-        "name": "Ojas",
-        "avatar": "https://i.pravatar.cc/150?img=17",
-        "text": "Sidebar collapse logic fixed.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Neha",
-        "avatar": "https://i.pravatar.cc/150?img=25",
-        "text": "Nice, now it feels smoother.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Tanish",
-        "avatar": "https://i.pravatar.cc/150?img=30",
-        "text": "I'll add analytics tracking.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Aarav",
-        "avatar": "https://i.pravatar.cc/150?img=39",
-        "text": "Make sure to anonymize data.",
-        "side": "right",
-        "reaction": ""
-    },
-
-    {
-        "name": "Shruti",
-        "avatar": "https://i.pravatar.cc/150?img=21",
-        "text": "Icons look pixelated on AMOLED.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Jeet",
-        "avatar": "https://i.pravatar.cc/150?img=26",
-        "text": "I'll export higher-res icons.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Mahika",
-        "avatar": "https://i.pravatar.cc/150?img=35",
-        "text": "Settings page needs more spacing.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Farhan",
-        "avatar": "https://i.pravatar.cc/150?img=49",
-        "text": "I'll add margin utilities.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Trisha",
-        "avatar": "https://i.pravatar.cc/150?img=4",
-        "text": "Notifications panel still clipped.",
-        "side": "left",
-        "reaction": ""
-    },
-
-    {
-        "name": "Rudra",
-        "avatar": "https://i.pravatar.cc/150?img=40",
-        "text": "Fixing overflow now.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Aditi",
-        "avatar": "https://i.pravatar.cc/150?img=3",
-        "text": "Did we finalize the theme colors?",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Keshav",
-        "avatar": "https://i.pravatar.cc/150?img=34",
-        "text": "Yeah, check the brand-guidelines doc.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Gayatri",
-        "avatar": "https://i.pravatar.cc/150?img=50",
-        "text": "I'll apply them across all screens.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Ratul",
-        "avatar": "https://i.pravatar.cc/150?img=38",
-        "text": "Header blur effect looks nice.",
-        "side": "right",
-        "reaction": "🔥"
-    },
-
-    {
-        "name": "Priya",
-        "avatar": "https://i.pravatar.cc/150?img=2",
-        "text": "We should tweak the button radius.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Zaid",
-        "avatar": "https://i.pravatar.cc/150?img=47",
-        "text": "Making them slightly rounder.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Ananya",
-        "avatar": "https://i.pravatar.cc/150?img=1",
-        "text": "Chat scroll feels laggy.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Raghav",
-        "avatar": "https://i.pravatar.cc/150?img=46",
-        "text": "I'll optimize rendering.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Muskan",
-        "avatar": "https://i.pravatar.cc/150?img=42",
-        "text": "Do we need a typing indicator?",
-        "side": "left",
-        "reaction": ""
-    },
-
-    {
-        "name": "Karan",
-        "avatar": "https://i.pravatar.cc/150?img=52",
-        "text": "Yeah, but keep it subtle.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Ansh",
-        "avatar": "https://i.pravatar.cc/150?img=53",
-        "text": "Profile edit feature done.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Meera",
-        "avatar": "https://i.pravatar.cc/150?img=54",
-        "text": "I'll refine the avatar cropper.",
-        "side": "right",
-        "reaction": ""
-    },
-    {
-        "name": "Parth",
-        "avatar": "https://i.pravatar.cc/150?img=55",
-        "text": "We need a loading skeleton.",
-        "side": "left",
-        "reaction": ""
-    },
-    {
-        "name": "Bhavya",
-        "avatar": "https://i.pravatar.cc/150?img=56",
-        "text": "I'll design one today.",
-        "side": "right",
-        "reaction": ""
     }
 ]
-
-
